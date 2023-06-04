@@ -1,6 +1,5 @@
 package praktikum.user;
 
-import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class UserData {
@@ -20,7 +19,7 @@ public class UserData {
     }
 
     public static UserData createdUser() {
-        final String name = RandomStringUtils.randomAlphabetic(6,10);
+        final String name = RandomStringUtils.randomAlphabetic(6, 10);
         final String email = RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru";
         final String password = RandomStringUtils.randomAlphabetic(6, 10);
         return new UserData(name, email, password);
@@ -30,20 +29,20 @@ public class UserData {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

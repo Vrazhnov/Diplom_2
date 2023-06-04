@@ -14,11 +14,11 @@ public class LoginTest {
     private UserService userService;
     private UserData userData;
     private Response response;
-    String accessToken;
+    private String accessToken;
 
     @Before
     public void setUp() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService = new UserService();
         response = userService.createUser(userData);
         accessToken = response.then().extract().body().path("accessToken");
@@ -45,7 +45,7 @@ public class LoginTest {
     @Test
     @DisplayName("Логин с неверным логином и паролем")
     public void loginByNonexistentUser() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService
                 .loginUser(userData)
                 .then()

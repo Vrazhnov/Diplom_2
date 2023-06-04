@@ -1,6 +1,5 @@
 package praktikum.order;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -10,7 +9,6 @@ import org.junit.Test;
 import praktikum.user.UserData;
 import praktikum.user.UserService;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -21,12 +19,12 @@ public class OrderCreationTest {
     private UserData userData;
     private UserService userService;
     private Response response;
-    String accessToken;
+    private String accessToken;
 
 
     @Before
     public void setUp() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService = new UserService();
         response = userService.createUser(userData);
         accessToken = response.then().extract().body().path("accessToken");

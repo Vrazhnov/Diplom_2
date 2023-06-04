@@ -14,7 +14,7 @@ public class UserCreationTest {
     private UserService userService;
     private UserData userData;
     private Response response;
-    String accessToken;
+    private String accessToken;
 
     @Before
     public void setUp() {
@@ -33,7 +33,7 @@ public class UserCreationTest {
     @Test
     @DisplayName("Создание нового пользователя с уникальным логином")
     public void createNewUser() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService
                 .createUser(userData)
                 .then()
@@ -46,7 +46,7 @@ public class UserCreationTest {
     @Test
     @DisplayName("Создание уже существующего пользователя")
     public void createNewUserWithExistentLogin() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService
                 .createUser(userData);
         userService
@@ -61,7 +61,7 @@ public class UserCreationTest {
     @Test
     @DisplayName("Создание пользователя без заполнения обязательного поля email")
     public void createNewUserWithoutEmail() {
-        userData = new UserData(null, RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(null, RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService
                 .createUser(userData)
                 .then()
@@ -74,7 +74,7 @@ public class UserCreationTest {
     @Test
     @DisplayName("Создание пользователя без заполнения обязательного поля пароль")
     public void createNewUserWithoutPassword() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", null, RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", null, RandomStringUtils.randomAlphabetic(6, 10));
         userService
                 .createUser(userData)
                 .then()
@@ -87,7 +87,7 @@ public class UserCreationTest {
     @Test
     @DisplayName("Создание пользователя без заполнения обязательного поля Имя")
     public void createNewUserWithoutName() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), null);
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), null);
         userService
                 .createUser(userData)
                 .then()

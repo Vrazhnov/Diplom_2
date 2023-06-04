@@ -28,7 +28,7 @@ public class UserService {
     }
 
     @Step("Логин пользователя c токеном")
-    public Response loginUser(UserData userData){
+    public Response loginUser(UserData userData) {
         return given()
                 .header("Content-type", "application/json")
                 .body(userData)
@@ -37,7 +37,7 @@ public class UserService {
     }
 
     @Step("Логин пользователя без токена")
-    public Response loginUser(UserData userData, String accessToken){
+    public Response loginUser(UserData userData, String accessToken) {
         return given()
                 .header("Content-type", "application/json")
                 .header("Authorization", accessToken)
@@ -47,7 +47,7 @@ public class UserService {
     }
 
     @Step("Изменение данных пользователя с авторизацией")
-    public Response changeUserDataWithAuth(UserData UserData, String accessToken){
+    public Response changeUserDataWithAuth(UserData UserData, String accessToken) {
         return given()
                 .header("Content-type", "application/json")
                 .header("Authorization", accessToken)
@@ -57,8 +57,9 @@ public class UserService {
                 .when()
                 .patch(Config.BASE_URI + Config.USER_PATH);
     }
+
     @Step("Изменение данных пользователя без авторизации")
-    public Response changeUserDataWithoutAuth(UserData UserData){
+    public Response changeUserDataWithoutAuth(UserData UserData) {
         return given()
                 .header("Content-type", "application/json")
                 .and()

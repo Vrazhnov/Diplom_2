@@ -18,7 +18,7 @@ public class ChangeUserDataTest {
 
     @Before
     public void setUp() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService = new UserService();
         response = userService.createUser(userData);
         accessToken = response.then().extract().body().path("accessToken");
@@ -29,7 +29,7 @@ public class ChangeUserDataTest {
         if (accessToken != null) {
             userService.deleteUser(accessToken);
         }
-}
+    }
 
     @Test
     @DisplayName("Изменение данных пользователя с авторизацией")
@@ -38,9 +38,9 @@ public class ChangeUserDataTest {
                 .changeUserDataWithAuth(userData, accessToken)
                 .then()
                 .assertThat()
-                .body("success", equalTo(true))
+                .statusCode(200)
                 .and()
-                .statusCode(200);
+                .body("success", equalTo(true));
     }
 
     @Test
@@ -50,9 +50,9 @@ public class ChangeUserDataTest {
                 .changeUserDataWithoutAuth(userData)
                 .then()
                 .assertThat()
-                .body("message", equalTo("You should be authorised"))
+                .statusCode(401)
                 .and()
-                .statusCode(401);
+                .body("message", equalTo("You should be authorised"));
     }
 
 }

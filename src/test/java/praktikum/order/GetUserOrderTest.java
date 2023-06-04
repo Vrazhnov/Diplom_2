@@ -21,12 +21,12 @@ public class GetUserOrderTest {
     private UserData userData;
     private UserService userService;
     private Response response;
-    String accessToken;
+    private String accessToken;
 
 
     @Before
     public void setUp() {
-        userData = new UserData(RandomStringUtils.randomAlphabetic(6,10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6,10), RandomStringUtils.randomAlphabetic(6,10));
+        userData = new UserData(RandomStringUtils.randomAlphabetic(6, 10) + "@ya.ru", RandomStringUtils.randomAlphabetic(6, 10), RandomStringUtils.randomAlphabetic(6, 10));
         userService = new UserService();
         response = userService.createUser(userData);
         accessToken = response.then().extract().body().path("accessToken");
